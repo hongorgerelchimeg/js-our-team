@@ -35,33 +35,65 @@ const members = [
 
 const teamContainer = document.querySelector('.team-container');
 
+cardCreator();
+
+const btnAdd = document.querySelector('#addMemberButton');
+
+btnAdd.addEventListener('click', function() {
+    teamContainer.innerHTML = " ";
+    const inputName = document.querySelector('#name');
+    const inputRole = document.querySelector('#role');
+    const inputImage = document.querySelector('#image');
+
+    let name = inputName.value ;
+    let role = inputRole.value ;
+    let image = inputImage.value ;
+    console.log(image);
+
+    let newMember = {};
+    newMember.name = name;
+    newMember.role = role;
+    newMember.image = image;
+
+    members.push(newMember);
+
+    cardCreator();
+
+
+
+
+
+})
+
 // Loop per creare cards
+function cardCreator() {
+    for (i = 0; i < members.length; i++) {
 
-for (i = 0; i < members.length; i++) {
 
+        let div = document.createElement("div");
+        div.classList.add("team-card");
+        let img = document.createElement('img');
 
-    let div = document.createElement("div");
-    div.classList.add("team-card");
-    let img = document.createElement('img');
+        div.innerHTML = `
+        <div class="card-image">
+            <img
+                src="${members[i].img}"
+                alt="${members[i].name}"
+            />
+        </div>
+        <div class="card-text">
+            <h3>${members[i].name}</h3>
+            <p>${members[i].role}</p>
+        </div>`;
+        
+        // let div = document.createElement("div");
+        // div.classList.add('card-text');
+        teamContainer.append(div);
 
-    div.innerHTML = `
-    <div class="card-image">
-        <img
-            src="${members[i].img}"
-            alt="${members[i].name}"
-        />
-    </div>
-    <div class="card-text">
-        <h3>${members[i].name}</h3>
-        <p>${members[i].role}</p>
-    </div>`;
-    
-    // let div = document.createElement("div");
-    // div.classList.add('card-text');
-    teamContainer.append(div);
+    }
 
 }
 
-   
+
 
 
