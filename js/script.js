@@ -4,33 +4,64 @@ const members = [
     {
         name: 'Wayne Barnett',
         role: 'Founder & CEO',
-        img: 'wayne-barnett-founder-ceo.jpg'
+        img: 'img/wayne-barnett-founder-ceo.jpg'
     },
     {
         name: 'Angela Caroll',
         role: 'Chief Editor',
-        img: 'angela-caroll-chief-editor.jpg'
+        img: 'img/angela-caroll-chief-editor.jpg'
     },
     {
         name: 'Walter Gordon',
         role: 'Office Manager',
-        img: 'walter-gordon-office-manager.jpg'
+        img: 'img/walter-gordon-office-manager.jpg'
     },
     {
         name: 'Angela Lopez',
         role: 'Social Media Manager',
-        img: 'angela-lopez-social-media-manager.jpg'
+        img: 'img/angela-lopez-social-media-manager.jpg'
     },
     {
         name: 'Scott Estrada',
         role: 'Developer',
-        img: 'scott-estrada-developer.jpg'
+        img: 'img/scott-estrada-developer.jpg'
     },
     {
         name: 'Barbara Ramos',
         role: 'Graphic Designer',
-        img: 'barbara-ramos-graphic-designer.jpg'
+        img: 'img/barbara-ramos-graphic-designer.jpg'
     },
 ]
 
 const teamContainer = document.querySelector('.team-container');
+
+// Loop per creare cards
+
+for (i = 0; i < members.length; i++) {
+
+
+    let div = document.createElement("div");
+    div.classList.add("team-card");
+    let img = document.createElement('img');
+
+    div.innerHTML = `
+    <div class="card-image">
+        <img
+            src="${members[i].img}"
+            alt="${members[i].name}"
+        />
+    </div>
+    <div class="card-text">
+        <h3>${members[i].name}</h3>
+        <p>${members[i].role}</p>
+    </div>`;
+    
+    // let div = document.createElement("div");
+    // div.classList.add('card-text');
+    teamContainer.append(div);
+
+}
+
+   
+
+
